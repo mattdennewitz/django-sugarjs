@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="sugar.min.js"></script>
+        <script src="sugar-widget.js"></script>
+
+        <script>
+            window.onload = function() {
+                new django_sugar.widget({selector: '.sugar'});
+                new django_sugar.widget({selector: '#pub_at'});
+            }
+        </script>
+    </head>
+    <body>
+        <h1>sugar.js/django demo</h1>
+
+        <div>
+            <pre>by selector</pre>
+            <input type="text" id="published_at" class="sugar" />
+        </div>
+
+        <div>
+            <pre>by id</pre>
+            <input type="text" id="pub_at" />
+        </div>
+    </body>
+</html>
+    
