@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.safestring import mark_safe
 
 
 class SugarDateTimeWidget(forms.DateTimeInput):
@@ -6,21 +7,18 @@ class SugarDateTimeWidget(forms.DateTimeInput):
     """
 
     class Media:
-        css = {
-            'all': ('/static/admin/css/sugar.css', )
-        }
+        css = {'all': ('/static/django_sugarjs/css/sugar.css', ), }
         js = (
-            '/static/django_sugarjs/',
-            '/static/admin/js/sugar.js',
+            '/static/django_sugarjs/js/sugar.min.js',
+            '/static/django_sugarjs/js/django-widget.js',
         )
 
-    def render(self, *args, **kwargs):
-        attrs = kwargs.get('attrs', {})
+    def render(self, name, value, attrs=None):
+        attrs = attrs or {}
         attrs['style'] = 'display: none;'
-        kwargs['attrs'] = attrs
 
         # render hidden input
-        html = super(SugarDateTimeWidget, self).render(*args, **kwargs)
+        html = super(SugarDateTimeWidget, self).render(name, value, attrs)
 
         # pour sugar on it
         sugar_field_id = attrs['id'] + '_sugar'

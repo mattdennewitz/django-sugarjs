@@ -1,4 +1,4 @@
-(function() {
+(function($) {
 
     window.django_sugar = {};
 
@@ -104,4 +104,4 @@
         }
     };
 
-})();
+})(django.jQuery);

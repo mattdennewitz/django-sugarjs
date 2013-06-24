@@ -2,7 +2,7 @@
     /* wrap text field with sugar */
     $.fn.sugar = function(opts) {
         var msgs = {
-            blank: 'Enter a date like <code>1/1/2013 5:30 PM</code>, <code>today 3pm</code>, <code>tomorrow</code>',
+            blank: 'Enter a date like <strong>"1/1/2013 5:30 PM"</strong>, <strong>"today 3pm"</strong>, or <strong>"tomorrow"</strong>',
             invalid: 'Please enter a valid date.'
         };
 
@@ -29,7 +29,7 @@
                 var val = Date.create(this.value);
 
                 if(val != 'Invalid Date') {
-                    var fmtd = val.format('{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}');
+                    var fmtd = val.format('{yyyy}-{MM}-{dd} {HH}:{mm}:{ss}');
                     $target.val(fmtd);
                     $display.html('Interpreted as: <strong>' + val.format('long') + '</strong>');
                 } else {
